@@ -725,6 +725,7 @@ class LineChart extends AbstractChart<LineChartProps, LineChartState> {
           key={index}
           d={result}
           fill="none"
+          strokeLinecap="round"
           stroke={this.getColor(dataset, 0.2)}
           strokeWidth={this.getStrokeWidth(dataset)}
           strokeDasharray={dataset.strokeDashArray}
@@ -981,13 +982,15 @@ class LineChart extends AbstractChart<LineChartProps, LineChartState> {
             contentContainerStyle={{ width: width * 2 }}
             showsHorizontalScrollIndicator={false}
             scrollEventThrottle={16}
-            onScroll={Animated.event([
-              {
-                nativeEvent: {
-                  contentOffset: { x: scrollableDotHorizontalOffset }
+            onScroll={Animated.event(
+              [
+                {
+                  nativeEvent: {
+                    contentOffset: { x: scrollableDotHorizontalOffset }
+                  }
                 }
-              }
-            ], { useNativeDriver: false }
+              ],
+              { useNativeDriver: false }
             )}
             horizontal
             bounces={false}
